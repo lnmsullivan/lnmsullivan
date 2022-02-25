@@ -1,0 +1,17 @@
+library(magrittr)
+library(ggplot2)
+library(readr)
+library(dplyr)
+library(tidyr)
+library(tidyverse)
+
+vermont <- counties %>%
+  filter(state == "Vermont")
+
+ggplot(vermont, aes(county, population))+
+  geom_col(width = 0.75, color = "black")+
+  geom_text(
+    aes(label = population),
+    colour = "white", size = 3,
+    vjust = 1.5, position = position_dodge(.9)
+  )
