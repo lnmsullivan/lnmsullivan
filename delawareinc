@@ -1,0 +1,17 @@
+library(magrittr)
+library(ggplot2)
+library(readr)
+library(dplyr)
+library(tidyr)
+library(tidyverse)
+
+delaware <- counties %>%
+  filter(state == "Delaware")
+
+ggplot(delaware, aes(county, income))+
+  geom_col(width = 0.75, color = "black")+
+  geom_text(
+    aes(label = income),
+    colour = "white", size = 3,
+    vjust = 1.5, position = position_dodge(.9)
+  )
